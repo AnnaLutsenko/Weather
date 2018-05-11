@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchCityTableViewController: UITableViewController {
     
@@ -15,6 +17,10 @@ class SearchCityTableViewController: UITableViewController {
     
     /// Models
     var cities: [City] = []
+    var shownCities: [City] = []
+    
+    /// used to keep all things that I want to unsubscribe from in the deinit process
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +30,26 @@ class SearchCityTableViewController: UITableViewController {
     func initContoller() {
         cities = City.allCities()
         tableView.register(UINib(nibName: CityCell.cellID, bundle: nil), forCellReuseIdentifier: CityCell.cellID)
+        //
+        searchBar.becomeFirstResponder()
+        //
+        searchBar
+            .rx.text
+            .orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { [unowned self] query in
+                self.shownCities = self.cities.filter { $0.name.hasPrefix(query) }
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return shownCities.count
     }
 
     
@@ -39,12 +59,17 @@ class SearchCityTableViewController: UITableViewController {
             return UITableViewCell()
         }
         //
-        let city = cities[indexPath.row]
+        let city = shownCities[indexPath.row]
         cell.cityLabel.text = city.name
         cell.temperatureLabel.isHidden = true
         //
-
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //
+        
     }
     
 }
