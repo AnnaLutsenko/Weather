@@ -18,8 +18,12 @@ class SearchCityTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        initContoller()
+    }
+    
+    func initContoller() {
+        cities = City.allCities()
+        tableView.register(UINib(nibName: CityCell.cellID, bundle: nil), forCellReuseIdentifier: CityCell.cellID)
     }
 
     // MARK: - Table view data source
