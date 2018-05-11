@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				95F8D3F1209A45A10079FBE3 /* CitiesTableVC */,
+				95F8D409209B1ADF0079FBE3 /* WeatherVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,6 +127,13 @@
 				95F8D3E6209A44FE0079FBE3 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		95F8D409209B1ADF0079FBE3 /* WeatherVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WeatherVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KK6SM6Q23J;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -368,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KK6SM6Q23J;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
