@@ -32,11 +32,60 @@
                             <outlet property="delegate" destination="ssq-gu-102" id="At0-bf-Bc7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xTX-y6-xBp"/>
+                    <navigationItem key="navigationItem" id="xTX-y6-xBp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7OM-7W-D9L">
+                            <connections>
+                                <segue destination="eCn-ug-3wr" kind="presentation" id="NpS-Z2-ZgW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AQ-sA-Yxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="537" y="266"/>
+        </scene>
+        <!--Search City Table View Controller-->
+        <scene sceneID="aR2-Hh-ni2">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchCityTableViewController" id="eCn-ug-3wr" customClass="SearchCityTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dbb-XW-izv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" id="AXb-z0-fGv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="eCn-ug-3wr" id="qL7-Me-R1t"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" id="6Zi-vK-dIe" customClass="CityCell" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Zi-vK-dIe" id="zdv-DO-33t">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eCn-ug-3wr" id="X6l-dQ-zl9"/>
+                            <outlet property="delegate" destination="eCn-ug-3wr" id="9Ls-Ad-nwW"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="AXb-z0-fGv" id="hxE-8a-7An"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wf7-n6-zcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1319" y="-74"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B2b-lh-FDF">

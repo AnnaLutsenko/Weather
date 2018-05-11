@@ -10,7 +10,7 @@ import UIKit
 
 class CityCell: UITableViewCell {
     
-    class var cellID : String { return "CityCell" }
+    static let cellID = "CityCell"
     
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
