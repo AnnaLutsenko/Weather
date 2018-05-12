@@ -13,7 +13,7 @@
 		95F8D3E3209A44FC0079FBE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F8D3E1209A44FC0079FBE3 /* Main.storyboard */; };
 		95F8D3E5209A44FE0079FBE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95F8D3E4209A44FE0079FBE3 /* Assets.xcassets */; };
 		95F8D3E8209A44FE0079FBE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F8D3E6209A44FE0079FBE3 /* LaunchScreen.storyboard */; };
-		95F8D3F0209A45230079FBE3 /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8D3EF209A45230079FBE3 /* CitiesTableViewController.swift */; };
+		95F8D3F0209A45230079FBE3 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8D3EF209A45230079FBE3 /* CitiesViewController.swift */; };
 		95F8D3F3209A464C0079FBE3 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8D3F2209A464C0079FBE3 /* CityCell.swift */; };
 		95F8D3FA209A48470079FBE3 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8D3F9209A48460079FBE3 /* City.swift */; };
 		95F8D3FD209A4F200079FBE3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8D3FC209A4F200079FBE3 /* UIColor.swift */; };
@@ -31,7 +31,7 @@
 		95F8D3E2209A44FC0079FBE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95F8D3E4209A44FE0079FBE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95F8D3E7209A44FE0079FBE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		95F8D3EF209A45230079FBE3 /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
+		95F8D3EF209A45230079FBE3 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 		95F8D3F2209A464C0079FBE3 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		95F8D3F9209A48460079FBE3 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		95F8D3FC209A4F200079FBE3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -100,13 +100,13 @@
 			path = WeatherApp;
 			sourceTree = "<group>";
 		};
-		95F8D3F1209A45A10079FBE3 /* CitiesTableVC */ = {
+		95F8D3F1209A45A10079FBE3 /* CitiesVC */ = {
 			isa = PBXGroup;
 			children = (
 				95F8D3F4209A46550079FBE3 /* CityCell */,
-				95F8D3EF209A45230079FBE3 /* CitiesTableViewController.swift */,
+				95F8D3EF209A45230079FBE3 /* CitiesViewController.swift */,
 			);
-			path = CitiesTableVC;
+			path = CitiesVC;
 			sourceTree = "<group>";
 		};
 		95F8D3F4209A46550079FBE3 /* CityCell */ = {
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				950F1F3220A5D126000EDBDE /* SearchCityTableVC */,
-				95F8D3F1209A45A10079FBE3 /* CitiesTableVC */,
+				95F8D3F1209A45A10079FBE3 /* CitiesVC */,
 				95F8D409209B1ADF0079FBE3 /* WeatherVC */,
 			);
 			path = Controllers;
@@ -293,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95F8D3F0209A45230079FBE3 /* CitiesTableViewController.swift in Sources */,
+				95F8D3F0209A45230079FBE3 /* CitiesViewController.swift in Sources */,
 				95F8D3DE209A44FC0079FBE3 /* AppDelegate.swift in Sources */,
 				95F8D3FA209A48470079FBE3 /* City.swift in Sources */,
 				95F8D3F3209A464C0079FBE3 /* CityCell.swift in Sources */,
