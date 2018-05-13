@@ -12,10 +12,13 @@ import RxSwift
 
 class CitiesViewController: UIViewController {
     
+    /// UI Elements
     @IBOutlet weak var tableView: UITableView!
-    // Models
-    let cities = Observable.just(City.defaultCities())
     
+    // Models
+    let cities = Variable<[City]>(City.defaultCities())
+    
+    ///
     let disposeBag = DisposeBag()
     
 
@@ -26,7 +29,7 @@ class CitiesViewController: UIViewController {
     
     func initController() {
         initNavigationBar()
-        initTableView()
+        bindTableView()
     }
     
     
@@ -34,11 +37,11 @@ class CitiesViewController: UIViewController {
         navigationItem.title = Constants.NavigationTitle.cities
     }
     
-    func initTableView() {
+    func bindTableView() {
         tableView.register(UINib(nibName: CityCell.cellID, bundle: nil), forCellReuseIdentifier: CityCell.cellID)
         
         // Create Table View
-        cities.bind(to: tableView.rx.items(cellIdentifier: CityCell.cellID, cellType: CityCell.self)) { row, city, cell in
+        cities.asObservable().bind(to: tableView.rx.items(cellIdentifier: CityCell.cellID, cellType: CityCell.self)) { row, city, cell in
             
             cell.cityLabel.text = city.name
             cell.temperatureLabel.text = String(row)
@@ -49,7 +52,18 @@ class CitiesViewController: UIViewController {
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
             self?.tableView.deselectRow(at: indexPath, animated: true)
+                
             }).disposed(by: disposeBag)
+        
+        // Subscribe to selectedCityObservable get selected city
+//        CityDataProvider.shared.selectedCitiesObservable
+//            .subscribe(onNext: { [weak self] city in
+//                self?.cities.value.append(city)
+//                self?.tableView.reloadData()
+//                }
+//        ).disposed(by: disposeBag)
+        
+        
     }
 
 }

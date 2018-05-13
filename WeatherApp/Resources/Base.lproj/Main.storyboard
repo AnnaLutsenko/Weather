@@ -45,7 +45,7 @@
                     <navigationItem key="navigationItem" id="XQ6-iT-AxN">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z2e-fy-oG7">
                             <connections>
-                                <segue destination="eCn-ug-3wr" kind="presentation" id="g9j-WU-mat"/>
+                                <segue destination="HaN-Bu-DD7" kind="presentation" id="0Th-nq-30a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -57,48 +57,47 @@
             </objects>
             <point key="canvasLocation" x="550" y="266"/>
         </scene>
-        <!--Search City Table View Controller-->
-        <scene sceneID="aR2-Hh-ni2">
+        <!--Search City View Controller-->
+        <scene sceneID="ih4-Hh-J6l">
             <objects>
-                <tableViewController storyboardIdentifier="SearchCityTableViewController" id="eCn-ug-3wr" customClass="SearchCityTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dbb-XW-izv">
+                <viewController id="HaN-Bu-DD7" customClass="SearchCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QRQ-Xm-1nA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fjs-qk-Ygc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-1D-H18">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" id="AXb-z0-fGv">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                            <connections>
-                                <outlet property="delegate" destination="eCn-ug-3wr" id="qL7-Me-R1t"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" id="6Zi-vK-dIe" customClass="CityCell" customModule="WeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Zi-vK-dIe" id="zdv-DO-33t">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eCn-ug-3wr" id="X6l-dQ-zl9"/>
-                            <outlet property="delegate" destination="eCn-ug-3wr" id="9Ls-Ad-nwW"/>
-                        </connections>
-                    </tableView>
+                        <constraints>
+                            <constraint firstItem="Fjs-qk-Ygc" firstAttribute="trailing" secondItem="1ub-co-Cxh" secondAttribute="trailing" id="6cW-Bf-pml"/>
+                            <constraint firstItem="Y0U-1D-H18" firstAttribute="leading" secondItem="1ub-co-Cxh" secondAttribute="leading" id="Hbn-Vh-4Nq"/>
+                            <constraint firstItem="Fjs-qk-Ygc" firstAttribute="top" secondItem="1ub-co-Cxh" secondAttribute="top" id="Idx-lK-qxq"/>
+                            <constraint firstItem="Y0U-1D-H18" firstAttribute="trailing" secondItem="1ub-co-Cxh" secondAttribute="trailing" id="TNL-S4-d9m"/>
+                            <constraint firstItem="Y0U-1D-H18" firstAttribute="top" secondItem="Fjs-qk-Ygc" secondAttribute="bottom" id="dYk-Ic-Ibn"/>
+                            <constraint firstItem="Y0U-1D-H18" firstAttribute="bottom" secondItem="1ub-co-Cxh" secondAttribute="bottom" id="lql-kv-jFq"/>
+                            <constraint firstItem="Fjs-qk-Ygc" firstAttribute="leading" secondItem="1ub-co-Cxh" secondAttribute="leading" id="pFa-zR-8UO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1ub-co-Cxh"/>
+                    </view>
                     <connections>
-                        <outlet property="searchBar" destination="AXb-z0-fGv" id="hxE-8a-7An"/>
+                        <outlet property="searchBar" destination="Fjs-qk-Ygc" id="AjE-FH-8vj"/>
+                        <outlet property="tableView" destination="Y0U-1D-H18" id="Wd1-Gs-6g6"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wf7-n6-zcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e4s-xg-V7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1330" y="-45"/>
+            <point key="canvasLocation" x="1326" y="-54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B2b-lh-FDF">
