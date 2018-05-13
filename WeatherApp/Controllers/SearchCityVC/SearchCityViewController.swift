@@ -19,6 +19,7 @@ class SearchCityViewController: UIViewController {
     /// Models
     let allCities = City.allCities() //Variable<[City]>(City.allCities())
     var shownCities: Variable<[City]> = Variable([])
+    let city = PublishSubject<City>()
     
     /// Data Provider
     let dataProvider = CityDataProvider.shared
@@ -75,9 +76,10 @@ class SearchCityViewController: UIViewController {
             .subscribe(onNext: { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
                 //
-                let city = PublishSubject<City>()
                 guard let selectCity = self?.shownCities.value[indexPath.row] else { return }
-                city.onNext(selectCity)
+                self?.dataProvider.city.onNext(selectCity)
+                //
+                self?.dismiss(animated: true, completion: nil)
                 //
             }).disposed(by: disposeBag)
     }

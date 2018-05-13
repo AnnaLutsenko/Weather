@@ -13,23 +13,5 @@ import RxSwift
 class CityDataProvider {
     static let shared = CityDataProvider()
     
-    var selectedCity = Variable<City?>(City(name: "Vinnytsya", id: 689558))
-    var selectedCitiesObservable: Observable<City>!
-    
-    
-    fileprivate let disposeBag = DisposeBag()
-    
-    
-    init() {
-        setup()
-    }
-    
-    func setup() {
-        selectedCitiesObservable = selectedCity.asObservable()
-            .map({ selectCity in
-                guard let city = selectCity else { return City(name: "Vinnytsya", id: 689558)}
-
-                return city
-            })
-    }
+    let city = PublishSubject<City>()
 }

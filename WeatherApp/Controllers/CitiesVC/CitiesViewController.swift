@@ -15,6 +15,9 @@ class CitiesViewController: UIViewController {
     /// UI Elements
     @IBOutlet weak var tableView: UITableView!
     
+    /// Managers
+    let dataProvider = CityDataProvider.shared
+    
     // Models
     let cities = Variable<[City]>(City.defaultCities())
     
@@ -62,7 +65,11 @@ class CitiesViewController: UIViewController {
 //                self?.tableView.reloadData()
 //                }
 //        ).disposed(by: disposeBag)
-        
+        dataProvider.city.asObserver()
+        .subscribe(onNext: { [weak self] city in
+            self?.cities.value.append(city)
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
         
     }
 
