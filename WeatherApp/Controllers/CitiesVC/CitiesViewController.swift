@@ -19,7 +19,7 @@ class CitiesViewController: UIViewController {
     let dataProvider = CityDataProvider.shared
     
     // Models
-    let cities = Variable<[City]>(City.defaultCities())
+    var cities = BehaviorRelay<[City]>(value: City.defaultCities())
     
     ///
     let disposeBag = DisposeBag()
@@ -58,17 +58,13 @@ class CitiesViewController: UIViewController {
                 
             }).disposed(by: disposeBag)
         
-        // Subscribe to selectedCityObservable get selected city
-//        CityDataProvider.shared.selectedCitiesObservable
-//            .subscribe(onNext: { [weak self] city in
-//                self?.cities.value.append(city)
-//                self?.tableView.reloadData()
-//                }
-//        ).disposed(by: disposeBag)
+        //
         dataProvider.city.asObserver()
-        .subscribe(onNext: { [weak self] city in
-            self?.cities.value.append(city)
-            self?.tableView.reloadData()
+            .subscribe({ [weak self] city in
+                guard let city = city.element else {return}
+                var newCities = self?.cities.value
+                newCities?.append(city)
+                self?.cities.accept(newCities ?? [city])
         }).disposed(by: disposeBag)
         
     }

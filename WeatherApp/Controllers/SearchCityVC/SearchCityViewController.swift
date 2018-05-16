@@ -17,8 +17,8 @@ class SearchCityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     /// Models
-    let allCities = City.allCities() //Variable<[City]>(City.allCities())
-    var shownCities: Variable<[City]> = Variable([])
+    let allCities = City.allCities()
+    var shownCities = BehaviorRelay<[City]>(value: [])
     let city = PublishSubject<City>()
     
     /// Data Provider
@@ -48,8 +48,8 @@ class SearchCityViewController: UIViewController {
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [unowned self] query in
-                self.shownCities.value = self.allCities.filter { $0.name.hasPrefix(query) }
-                self.tableView.reloadData()
+                let cities = self.allCities.filter { $0.name.hasPrefix(query) }
+                self.shownCities.accept(cities)
             })
             .disposed(by: disposeBag)
         
